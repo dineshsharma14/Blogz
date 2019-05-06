@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{tabtitle}}</title>
+
+    <style>
+        a {
+            margin: 5px 10px 5px 10px;
+        }
+    </style>
+
+    {% block style %}
+
+    {% endblock style %}
+</head>
+<body>
+    <nav>
+        <a href='/blog'>Main Blog Page</a>
+        <a href='/newpost'>Add a Blog Entry</a>
+    </nav>
+    {% block content %}
+
+    {% endblock content %}
+</body>
+</html>

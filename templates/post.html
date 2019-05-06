@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block style %}
+
+<style>
+    h1 {
+        margin: 20px auto 10px ; 
+        color: red;
+        width: 400px;
+        background-color: beige;
+    }
+</style>
+
+{% endblock style %}
+
+{% block content %}
+
+<h1>{{posted_blog.title}}</h1>
+<p>{{posted_blog.blog}}</p>
+
+{% endblock content %}
