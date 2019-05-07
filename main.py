@@ -1,6 +1,7 @@
 # Modules to build the webserver its associates and mysql database.
 from flask import Flask, request, render_template, redirect, flash
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -16,6 +17,7 @@ class Blog(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(120))
     blog = db.Column(db.String(1000))
+    pub_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow )
 
     def __init__(self, title, blog):
         self.title = title
@@ -25,6 +27,7 @@ class Blog(db.Model):
 def index():
     
     blogs = Blog.query.all()
+    blogs.reverse()
     blog_id = request.args.get('id')
 
     if request.method == 'POST':

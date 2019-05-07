@@ -9,6 +9,10 @@ h1 {
         width: 400px;
         background-color: beige;
     }
+em {
+    color: purple;
+    display:inline-block;
+}
 </style>
 
 {% endblock style %}
@@ -20,6 +24,7 @@ h1 {
 <div>
 {% for blog in blogs %}
 <a href='/blog?id={{blog.id}}'><h3>{{blog.title}}</h3></a>
+<em><small>{{blog.pub_date}}</small></em>
 <p>{{blog.blog}}</p>
 <hr/>
 {% endfor %}
