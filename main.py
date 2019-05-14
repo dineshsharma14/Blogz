@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from hash_utility import make_pw_hash, check_pw_hash
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 app.config['DEBUG'] = True
 # Setting up the database infrastructure.
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://blogz:blogging@localhost:8889/blogz'
@@ -31,12 +31,12 @@ class User(db.Model):
     """" Modeling user object in python and respective table in db  """
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(120))
-    password = db.Column(db.String(120))
+    pw_hash = db.Column(db.String(120))
     blogz = db.relationship('Blog',backref='owner')
 
     def __init__(self, username, password):
         self.username = username
-        self.password = make_pw_hash(password)
+        self.pw_hash = make_pw_hash(password)
 
 def space_checker(name):
     for char in name:
@@ -206,6 +206,7 @@ def require_login():
         return redirect('/login')"""
 
 @app.route('/home', methods=['GET'])
+@app.route('/')
 def home():
     users = User.query.all()
     return render_template('home.html', tabtitle='The Amigos Blogz', users=users)
@@ -219,6 +220,7 @@ def logout():
         return redirect('/home')
     else:
         return redirect('/home')
+
 
 if __name__ == '__main__':
     app.run()
