@@ -7,20 +7,64 @@
     <title>{{tabtitle}}</title>
 
     <style>
-        a {
-            margin: 5px 10px 5px 10px;
-        }
-    </style>
+            .wrapper {
+                width: 500px;
+                margin: 0px auto 0px auto;
+            }
+            
+            h1 {
+                color: red;
+                margin: 5px 5px 5px 100px;
+            }
+            
+            #leftbar li {
+                display: inline;
+                margin: 10px 20px 5px 5px;
+                float: left;
+                
+            }
+            
+            #rightbar li {
+                display: inline;
+                margin: 10px 20px 5px 5px;
+                float: left;
+            }
+            
+            p.hello {
+                margin: 50px 5px 5px 5px;
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                color:blue;
+                background-blend-mode: luminosity;
+            }
+     
+        </style>
 
-    {% block style %}
+    {% block styles %}
+    
 
-    {% endblock style %}
+    {% endblock styles %}
 </head>
 <body>
-    <nav>
-        <a href='/blog'>Main Blog Page</a>
-        <a href='/newpost'>Add a Blog Entry</a>
-    </nav>
+        <div class='wrapper'>
+                <header>
+                    <h1>The Amigos Blogz!</h1>
+                    <nav>
+                        <ul id='leftbar'>
+                            <li><a href='/home'>Home</a></li>
+                            <li><a href='/blog'>All Posts</a></li>
+                            <li><a href='/newpost'>New Post</a></li>
+                        </ul>
+                        <ul id='rightbar'>
+                            <li><a href='/login'>Login</a></li>
+                            <li><a href='/logout'>Logout</a></li>
+                        </ul>
+                    </nav>
+                </header>
+                {%if session['username']%}
+                <p class='hello'>Hello! {{session['username'].title()}}</p>
+                {%endif%}
+                </div>
+
     {% block content %}
 
     {% endblock content %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block styles %}
+
+<style>
+
+em {
+    color: purple;
+    display:inline-block;
+}
+
+h2 {
+    margin: 50px auto auto 20px;
+    color: red;
+}
+</style>
+
+{% endblock styles %}
+
+{% block content %}
+
+<div>
+{% if blogs|length == 0 %}
+<h2>No Blogs yet by {{name.title()}}!!</h2>
+    {% else %}
+        {% for blog in blogs %}
+            <br/>
+            <a href='/blog?blog_id={{blog.id}}'><h3>{{blog.title}}</h3></a>
+            <em><small>{{blog.pub_date}}</small></em>
+            <p>{{blog.blog}}</p>
+            <hr/>
+        {% endfor %}
+{% endif %}
+</div>
+
+{% endblock content %}

@@ -1,27 +1,27 @@
 {% extends "base.html" %}
 
-{% block style %}
+{% block styles %}
 
 <style>
-    h1 {
+    h3 {
         margin: 20px auto 10px ; 
         color: red;
-        width: 400px;
         background-color: beige;
     }
 
-em {
-    color: purple;
-    display:inline-block;
-}
+    em {
+        color: purple;
+        display:inline-block;
+    }
 </style>
 
-{% endblock style %}
+{% endblock styles %}
 
 {% block content %}
-
-<h1>{{posted_blog.title}}</h1>
+<br/>
+<h3>{{posted_blog.title}}</h3>
 <small><em>{{posted_blog.pub_date}}</em></small>
 <p>{{posted_blog.blog}}</p>
+<small>by {{posted_blog.owner.username}}</small>
 
 {% endblock content %}

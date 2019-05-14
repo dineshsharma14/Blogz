@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<style>
+
+img {
+    margin: 60px auto auto auto;
+    display: block;
+}
+h4, h2 {
+    margin: 50px auto auto 20px;
+    color: red;
+}
+ul {
+    margin: 5px auto auto 20px;
+}
+li {
+    margin: 5px 5px 5px 5px;
+}
+</style>
+
+{% endblock styles %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages()%}
+<img src='pexels_blog.jpeg' alt='blogging_image'/>
+<h4>{{messages[0]}}</h4>
+{% endwith %}
+
+<h2>Blog Users</h2>
+{% for user in users %}
+<ul>
+    <li><a href='/blog?user={{user.username}}'>{{user.username}}</a></li>
+</ul>
+{% endfor %}
+
+{% endblock content %}

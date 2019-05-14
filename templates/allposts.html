@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block styles %}
+
+<style>
+    h3 {
+        margin: 20px auto 5px ; 
+        color: purple;
+        background-color: beige;
+    }
+    em {
+        color: gray;
+    }
+</style>
+
+{% endblock styles %}
+
+{% block content %}
+<br/>
+{% for blog in blogs %}
+    <a href='/blog?blog_id={{blog.id}}'><h3>{{blog.title}}</h3></a>
+    <p>{{blog.blog}}</p><br/>
+    <em>written by {{blog.owner.username}} on {{blog.pub_date}}</em>
+{% endfor %}
+{% endblock content %}

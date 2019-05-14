@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<style>
+h2 {
+    margin: 20px auto 10px ; 
+    color: red;
+    background-color: beige;
+}
+em {
+    color: red;
+}
+</style>
+
+{% endblock styles %}
+
+{% block content %}
+<br/>
+<h2>Signup to Amigos Blogz!</h2>
+<form action="/signup" method="post">
+    {% with messages = get_flashed_messages() %}
+    <table>
+        <tr>
+            <td><label>User Name</label></td>
+            <td><input name="name" type="text" value="{{username}}"><em>{{messages[0]}}</em></td> 
+        </tr>
+        <tr>
+            <td><label for="password">Password</label></td>
+            <td><input name="password" type="password"/><em>{{messages[1]}}</em></td>
+        </tr>
+        <tr>
+            <td><label for="verify">Verify Password</label></td>
+            <td><input name="verify" type="password"/><em>{{messages[2]}}</em></td>
+        </tr>
+    </table>
+    <input type="submit" value="signup"/>
+    {% endwith %}
+</form>
+{% endblock content %}

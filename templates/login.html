@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<style>
+    h3 {
+        color: purple;
+    }
+    em {
+        color: red;
+    }
+</style>
+{% endblock styles %}
+
+{% block content %}
+<br/>
+<h3>Login to Blog Amigos!</h3>
+<p>If you don't have an account, you may <a href='/signup'> signup</a> for one.</p>
+<form action="/login" method="post">
+    {% with messages = get_flashed_messages() %}
+    <table>
+        <tr>
+            <td><label>User Name</label></td>
+            <td>
+                <input name="name" type="text" value="{{username}}" autofocus=autofocus/>
+                <em>{{messages[0]}}</em>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="password">Password</label></td>
+            <td>
+                <input name="password" type="password"/>
+                <em>{{messages[1]}}</em>
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Login"/>
+    {% endwith %}
+</form>
+{% endblock content %}

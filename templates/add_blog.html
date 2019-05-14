@@ -1,16 +1,20 @@
 {% extends "base.html" %}
 
-{% block style %}
+{% block styles %}
 
 <style>
 
-    h1 {
-        margin: 20px auto 10px ; 
+    h2 {
+        margin: 20px auto 5px ; 
         color: red;
-        width: 400px;
         background-color: beige;
     }
 
+    h3 {
+        margin: 20px auto 5px ; 
+        color: purple;
+        background-color: beige;
+    }
     em {
         color: red;
     }
@@ -22,30 +26,28 @@
 
 </style>
 
-{% endblock style %}
+{% endblock styles %}
 
 {% block content %}
+<br/>
+<h2>Add a Blog Entry</h2>
 
-<h1>Add a Blog Entry</h1>
-
-<form action='/blog' method='post'>
+<form action='/newpost' method='post'>
+    {% with messages = get_flashed_messages() %}
     <label>
     <p>Title for your new blog:</p>
     <input type='text' name='title' value='{{title}}' checked=checked autofocus=autofocus>
-    {% with messages = get_flashed_messages() %}
     <p><em>{{messages[0]}}</em></p>
-    {% endwith %}
     </label>
 
     <label>
     <p>Your new blog:</p>
     <textarea id=blog type='text' name='blog' placeholder="Once upon a time...">{{blog}}</textarea>
-    {% with messages = get_flashed_messages() %}
     <p><em>{{messages[1]}}</em></p>
-    {% endwith %}
     </label>
     
     <input type='submit' value='Add Entry'/>
+    {% endwith %}
 </form>
 
 {% endblock content %}
