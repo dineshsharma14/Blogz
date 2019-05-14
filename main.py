@@ -199,12 +199,6 @@ def add_blog():
         return redirect('/login')
 
 
-"""@app.before_request
-def require_login():
-    not_allowed_route = ['newpost'] 
-    if request.endpoint in not_allowed_route and 'username' not in session :
-        return redirect('/login')"""
-
 @app.route('/home', methods=['GET'])
 @app.route('/')
 def home():
